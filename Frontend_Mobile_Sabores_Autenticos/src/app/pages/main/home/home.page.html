@@ -1,0 +1,87 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+      <ion-menu-button menu="menu-content"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button class="shoppingCart" (click)="setOpen(true)">
+        <ion-icon slot="end" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <strong>Inicio</strong>
+      <div class="role">U S U A R I O</div>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="MenuTitle">Menú de Sabores Autenticos</h1>
+
+  <ion-card *ngFor="let product of products">
+    <img alt="product" src="{{ this.apiUrl + product.imageName}}" />
+    <ion-card-header>
+      <ion-card-title>{{ product.pdtName }}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{ product.pdtDescription }}
+    </ion-card-content>
+
+    <ion-item>
+      <ion-label position="fixed">Cantidad: {{ product.qtyInStock }}</ion-label>
+      <ion-label position="fixed">Precio: ${{ product.price }}</ion-label>
+    </ion-item>
+    
+    <ion-button (click)="addToTheShoppingCart(product)" expand="block" fill="clear" shape="round">
+      Agregar al carrito
+    </ion-button>
+  </ion-card>
+
+  <ion-modal class="orderReady" [isOpen]="isOrderReady">
+    <ng-template>
+      <div class="wrapper">
+        <h1 class="orderText">Orden Lista</h1>
+        <ion-label class="modalMessage">Se puede acercar al restaurante a retirar su pedido</ion-label>
+      </div>
+    </ng-template>
+  </ion-modal>
+
+  <ion-modal [isOpen]="isModalOpen">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title>Carro de compras</ion-title>
+          <ion-buttons slot="end">
+            <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <div *ngIf="shoppingCartIsEmpty(); else elseBlock">
+          <ion-label class="MenuTitle">El carro de compras esta vacio</ion-label>
+        </div>
+        <ng-template #elseBlock>
+          <ion-card *ngFor="let product of shoppingCart">
+            <ion-card-header>
+              <ion-card-title>{{ product.pdtName }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              {{ product.pdtDescription }}
+            </ion-card-content>
+          </ion-card>
+
+          <ion-item class="custom-input" lines="none">
+            <ion-icon color="primary" slot="start" name="chatbox-outline"></ion-icon>
+            <ion-input [(ngModel)]="this.commentOrder" type="text" label="¿Algun comentario con la orden?" label-placement="floating"></ion-input>
+          </ion-item>
+
+          <ion-button (click)="makeOrder()" expand="block">
+            Ordenar
+          </ion-button>  
+        </ng-template>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

@@ -1,0 +1,24 @@
+<app-nav></app-nav>
+<app-sidenav></app-sidenav>
+<div id="adminsTableDiv" >
+  <table id="admins" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Rut/DNI</th>
+        <th>Correo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of adminsData">
+        <th>{{user.id}}</th>
+        <th>{{user.name}}</th>
+        <th>{{user.rut}}</th>
+        <th>{{user.email}}</th>
+      </tr>
+    </tbody>
+  </table>
+  <div id="center">
+    <button id="buttonAdm" class="btn btn-success" routerLink="nuevo-admin">Añadir administrador</button>
+  </div>

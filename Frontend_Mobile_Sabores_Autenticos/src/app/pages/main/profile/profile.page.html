@@ -1,0 +1,26 @@
+<app-header [showMenu]="true" title="Perfil" role="U S U A R I O"></app-header>
+<ion-content class="ion-padding-top ion-text-center">
+  <ion-icon class="avatar-icon" name="person-circle-outline"></ion-icon>
+  <h2>{{ this.profile.name }}</h2>
+
+  <div>
+    <h3>Rut</h3>
+    <ion-label>{{ this.profile.rut }}</ion-label>
+
+    <h3>Correo</h3>
+    <ion-label>{{ this.profile.email }}</ion-label>
+
+    <h3>Rol</h3>
+    <ion-label *ngIf="this.profile.role === 'client'">Cliente</ion-label>
+    <ion-label *ngIf="this.profile.role === 'admin'">Administrador</ion-label>
+  </div>
+
+  <ion-modal class="orderReady" [isOpen]="isOrderReady">
+    <ng-template>
+      <div class="wrapper">
+        <h1 class="orderText">Orden Lista</h1>
+        <ion-label class="modalMessage">Se puede acercar al restaurante a retirar su pedido</ion-label>
+      </div>
+    </ng-template>
+  </ion-modal>
+</ion-content>

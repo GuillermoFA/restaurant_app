@@ -1,0 +1,72 @@
+<app-nav></app-nav>
+<app-sidenav></app-sidenav>
+<div class="row p-5">
+  <div id="progressOrders" class="main">
+    <h2>Pedidos en progreso</h2>
+  </div>
+
+  <div id="card" *ngFor="let order of ordersData"
+  class="max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="">
+      <h2>Pedido numero: {{order.id}}</h2>
+
+      <ul>Nombre del cliente: {{order.customer.name}}</ul>
+      <ul>Fecha y Hora: {{order.createdAt}}</ul>
+      <ul>Monto: ${{order.totalPrice}}</ul>
+    <div class="">
+      <button class="btn btn-success" (click)="detail(order)">Detalles</button>
+      <button class="btn btn-warning" (click)="edit(order.id)">Editar Estado</button>
+    </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<dialog id="dialog" #dialog>
+  <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-4 text-center">
+      <h2>Detalle del pedido: {{activeOrder.id}}</h2>
+
+      <ul>Comentarios: {{activeOrder.comments}}</ul>
+
+      <h6>Productos:</h6>
+      <div>
+        <table class="table" >
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of activeOrder.orderItems">
+
+              <td scope="row">{{producto.product.pdtName}}</td>
+              <td>{{producto.quantity}}</td>
+              <td>{{producto.product.price}}</td>
+            </tr>
+
+          </tbody>
+            <br>
+
+            <th>Total: ${{activeOrder.totalPrice}}</th>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="center">
+    <button (click)="dialog.close()">OK</button>
+  </div>
+
+</dialog>
+
+
+
+
+

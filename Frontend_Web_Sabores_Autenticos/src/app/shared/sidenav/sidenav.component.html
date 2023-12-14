@@ -1,0 +1,27 @@
+<div id="sidenav" class="sidenav mt-5">
+  <div class="dropdown" style="margin-top: 25%;">
+    <!--Rutas a nuevas views o mostrar por javascript-->
+    <a class="btn btn-secondary" routerLink="/catalogo" style="color: aliceblue;" role="button" aria-expanded="false">
+      Cátalogo
+    </a>
+
+    <a class="btn btn-secondary dropdown-toggle" routerLink="/pedidos" style="color: aliceblue;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Panel de pedidos
+    </a>
+
+    <ul id="drop" class="dropdown-menu">
+      <li><a class="dropdown-item"id="waitOrder" (click)="waitingOrders()">Pedidos en espera</a></li>
+      <li><a class="dropdown-item" id="onOrder" (click)="onOrders()">Pedidos en curso</a></li>
+      <li><a class="dropdown-item" id="orders" (click)="orderHistory()">Historial de pedidos</a></li>
+    </ul>
+
+    <a class="btn btn-secondary dropdown-toggle" routerLink="/usuarios" style="color: aliceblue;" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Administrar Usuarios
+    </a>
+
+    <ul id="drop" class="dropdown-menu">
+      <li><a class="dropdown-item" id="showMorning" (click)="showAdmins()">Ver Administradores</a></li>
+      <li><a class="dropdown-item" id="showAfternoon" (click)="showUsers()">Ver Clientes</a></li>
+    </ul>
+  </div>
+</div>

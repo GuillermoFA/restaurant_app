@@ -1,0 +1,53 @@
+<app-nav></app-nav>
+<app-sidenav></app-sidenav>
+
+<div class="container py-5 my-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="card shadow-lg col-sm-6">
+      <div class="card-header bg-nav text-white">
+        <h2 class="text-center">Editar Producto</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="productForm" (submit)="editProduct()">
+          <!-- Nombre del Producto -->
+          <div class="mb-4">
+            <label for="productName" class="form-label">Nombre del Producto:</label>
+            <input type="text" class="form-control" id="productName" formControlName="PdtName" required>
+            <div *ngIf="productForm.get('PdtName')?.hasError('required') && productForm.get('PdtName')?.touched" class="text-danger">
+              El nombre del producto es obligatorio.
+            </div>
+          </div>
+          <!-- Descripción del Producto -->
+          <div class="mb-4">
+            <label for="productDescription" class="form-label">Descripción del Producto:</label>
+            <input type="text" class="form-control" id="productDescription" formControlName="PdtDescription" required>
+            <div *ngIf="productForm.get('PdtDescription')?.hasError('required') && productForm.get('PdtDescription')?.touched" class="text-danger">
+              La descripción del producto es obligatoria.
+            </div>
+          </div>
+          <!-- Precio del Producto -->
+          <div class="mb-4">
+            <label for="price" class="form-label">Precio del Producto:</label>
+            <input type="number" class="form-control" id="price" formControlName="Price" required>
+            <div *ngIf="productForm.get('Price')?.hasError('required') && productForm.get('Price')?.touched" class="text-danger">
+              El precio del producto es obligatorio.
+            </div>
+            <div *ngIf="productForm.get('Price')?.hasError('min') && productForm.get('Price')?.touched" class="text-danger">
+              El precio debe ser igual o mayor a 0.
+            </div>
+          </div>
+          <!-- Nuevo campo para el archivo -->
+          <div class="mb-3">
+            <label for="imageFile">Imagen del producto</label>
+            <input type="file" (change)="onImageChange($event)" accept="image/*" formControlName="ImageFile" />
+            <img [src]="previewImageUrl" alt="Vista previa de la imagen" *ngIf="previewImageUrl" class="mt-2">
+          </div>
+          <div class="text-center p-1">
+            <button type="submit" class="btn btn-success m-lg-2">Guardar Cambios</button>
+            <button type="button" class="btn btn-danger m-lg-2" (click)="cancelUpdate()">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

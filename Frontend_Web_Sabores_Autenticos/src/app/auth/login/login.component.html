@@ -1,0 +1,41 @@
+<!-- login.component.html -->
+<div id="container" class="container py-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-5 py-lg-5 mt-xxl-5">
+      <div class="card shadow-lg" style="border-radius: 1rem;">
+        <div class="card-body p-5 text-center">
+          <div class="login">
+            <form class="custom-form" [formGroup]="loginForm" (ngSubmit)="login()">
+              <a class="navbar-brand px-3">
+                <img src="assets/images/sabores_photo.jpg" alt="Logo" height="200">
+              </a>
+              <p class="text-danger">{{loginError}}</p>
+              <h3 class="text-center mb-5">Inicio de sesión</h3>
+              <div class="mb-3">
+                <label for="email"></label>
+                <input type="text" class="form-control" id="email" placeholder="Ingresa tu correo electrónico" formControlName="email">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger">
+                  <div *ngIf="email.errors?.['required']">
+                    El correo electrónico es requerido.
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="password"></label>
+                <input type="password" class="form-control" id="password" placeholder="Ingresa tu contraseña" formControlName="password">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                  <div *ngIf="password.errors?.['required']">
+                    La contraseña es requerida.
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-outline-success border border-3">Iniciar sesión</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

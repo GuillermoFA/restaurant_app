@@ -1,0 +1,14 @@
+
+.custom-img {
+  /* Ajusta el tamaño de las imágenes según tus necesidades */
+  max-width: 100%;
+  max-height: 500px;
+  width: auto;
+  height: auto;
+}
+
+#carouselExampleCaptions {
+  max-width: 900px; /* Ajusta el ancho según sea necesario */
+  margin: 0 auto; /* Centra horizontalmente */
+  margin-right: 230px;
+}

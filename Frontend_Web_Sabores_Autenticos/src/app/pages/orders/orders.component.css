@@ -1,0 +1,43 @@
+
+
+/* Main content */
+.main {
+  display: none;
+  margin-left: 250px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.card{
+  height: 50%;
+  width: 50%;
+}
+
+#cardCtn{
+
+  flex-direction: row;
+  width: 400px;
+  justify-content: space-between;
+}
+
+
+
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+div.center{
+  text-align: center ;
+  margin-top: 50px;
+  margin-left: 250px;
+}
+
+button{
+  margin: 5px;
+  margin-top: 50px;
+}
+

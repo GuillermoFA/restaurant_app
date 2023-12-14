@@ -1,0 +1,7 @@
+{
+  "name": "Frontend_Mobile_Sabores_Autenticos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,14 @@
+# Carpeta bin y obj generada por el compilador
+bin/
+obj/
+
+# Carpeta de archivos de copia de seguridad
+Backup*/
+*.bak
+
+# Carpeta de publicación
+publish/
+
+# Archivos de configuración local
+appsettings.Development.json
+appsettings.Production.json

@@ -1,0 +1,33 @@
+<div>
+  <app-nav></app-nav>
+  <app-sidenav></app-sidenav>
+  <div class="container-fluid">
+    <div class="">
+
+      <div id="" class="">
+        <h2 class="text-center w-100 py-4">Lista de productos</h2>
+        <div class="py-3 text-center w-100">
+          <button class="btn btn-success" (click)="addProduct()">Añadir Producto</button>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div *ngFor="let product of productsData" class="col-md-4">
+              <div class="card mb-3 card shadow-lg">
+                <img src="{{ this.apiUrl + product.imageName }}" class="card-img-top mx-auto" alt="{{ product.pdtName }}">
+                <div class="card-body text-center">
+                  <h3 class="card-title">{{ product.pdtName }}</h3>
+                  <p class="card-text">{{ product.pdtDescription }}</p>
+                  <p class="card-text">Precio: ${{ product.price }}</p>
+                  <div class="text-center">
+                    <button class="btn btn-warning m-2 p-2" (click)="editProduct(product.productId)">Editar</button>
+                    <button class="btn btn-danger m-2 p-2" (click)="deleteProduct(product.productId)">Eliminar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

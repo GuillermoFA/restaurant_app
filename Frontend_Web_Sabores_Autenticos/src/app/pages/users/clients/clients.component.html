@@ -1,0 +1,30 @@
+<app-nav></app-nav>
+<app-sidenav></app-sidenav>
+
+<div id="usersTableDiv" >
+  <table id="clients" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Rut/DNI</th>
+        <th>Correo</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersData">
+        <th>{{user.id}}</th>
+        <th>{{user.name}}</th>
+        <th>{{user.rut}}</th>
+        <th>{{user.email}}</th>
+        <th>{{user.isActiveString}}</th>
+        <th>
+          <button *ngIf="user.isActive" id="button" class="btn btn-primary" (click)="disableUser(user.id)">Deshabilitar</button>
+          <button *ngIf="!user.isActive" id="button" class="btn btn-primary" (click)="enableUser(user.id)">Habilitar</button>
+          <button id="button" class="btn btn-danger" (click)="deleteUser(user.id)">Eliminar</button>
+      </tr>
+    </tbody>
+  </table>
+</div>

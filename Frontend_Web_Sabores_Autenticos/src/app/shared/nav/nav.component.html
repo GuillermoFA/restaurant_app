@@ -1,0 +1,31 @@
+<nav class="navbar py-2 bg-nav" style="z-index: 1;" [class.sticky]="isSticky">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-light text-white" routerLink="/catalogo">
+      <img src="assets/images/sabores auténticos.png" alt="Logo" width="250" height="200" class="img-fluid">
+    </a>
+    <ul class="nav justify-content-end px-lg-3 mx-5">
+      <li *ngIf="!userLoginOn" class="nav-item">
+        <a class="nav-link text-white btn btn-outline-success fw-semibold" routerLink="/iniciar-sesion"> Iniciar Sesión
+          <img src="assets/images/Avatar_icon_green.svg.png" alt="Logo" width="30" height="25" class="img-fluid"></a>
+      </li>
+      <li *ngIf="userLoginOn" class="nav-item dropdown">
+        <a *ngIf="userLoginOn" class="nav-link dropdown-toggle nav-link text-white btn btn-outline-success" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Cuenta
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a *ngIf="userLoginOn" class="dropdown-item" routerLink="/pedidos">Ver pedidos</a></li>
+          <li><a *ngIf="userLoginOn" class="dropdown-item" routerLink="/catalogo">Ver catálogo</a></li>
+          <li><hr *ngIf="userLoginOn" class="dropdown-divider"></li>
+          <li><a *ngIf="userLoginOn" class="dropdown-item" routerLink="/usuarios">Administrar usuarios</a></li>
+
+        </ul>
+      </li>
+      <li *ngIf="userLoginOn" class="nav-item">
+        <a class="nav-link text-white btn btn-outline-danger" routerLink="/iniciar-sesion"  (click)="onClickOut()">Cerrar Sesión
+        </a>
+      </li>
+
+    </ul>
+</div>
+
+

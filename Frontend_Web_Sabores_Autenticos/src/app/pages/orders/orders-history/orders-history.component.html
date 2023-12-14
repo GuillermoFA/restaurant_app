@@ -1,0 +1,75 @@
+<app-nav></app-nav>
+<app-sidenav></app-sidenav>
+<div id="ordersHistory" >
+  <h2>Historial de pedidos</h2>
+  <div id="historyTableDiv"  >
+    <table id="ordersHistory" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+      <thead>
+        <tr>
+          <th>N° de orden</th>
+          <th>Nombre</th>
+          <th>Estado</th>
+          <th>Detalle</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of historyData">
+          <th>{{order.id}}</th>
+          <th>{{order.customer.name}}</th>
+          <th>{{order.status}}</th>
+          <th>
+            <button class="btn btn-success" (click)="detail(order)"> Detalle</button>
+          </th>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div id="alert" class="alert">
+  <strong>No hay ordenes</strong>
+
+</div>
+
+
+<dialog id="dialog" #dialog>
+  <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="p-4">
+      <h2>Detalle del pedido: {{activeOrder.id}}</h2>
+
+      <ul>Comentarios: {{activeOrder.comments}}</ul>
+
+      <h6>Productos</h6>
+      <div>
+        <table class="table" >
+          <thead>
+            <tr>
+              <th scope="col">Item</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Precio</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let producto of activeOrder.orderItems">
+
+              <td scope="row">{{producto.product.pdtName}}</td>
+              <td>{{producto.quantity}}</td>
+              <td>{{producto.product.price}}</td>
+            </tr>
+
+          </tbody>
+            <br>
+
+            <th>Total: ${{activeOrder.totalPrice}}</th>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="center">
+    <button (click)="dialog.close()">OK</button>
+  </div>
+
+</dialog>

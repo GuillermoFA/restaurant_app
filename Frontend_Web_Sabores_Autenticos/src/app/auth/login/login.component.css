@@ -1,0 +1,15 @@
+
+#container {
+
+  margin: 5;
+  padding: 5;
+
+  min-height: 100dvh;
+  height: 100%;
+  min-width: 100%;
+
+  background-image: url(src/assets/images/RESTAURANT.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
